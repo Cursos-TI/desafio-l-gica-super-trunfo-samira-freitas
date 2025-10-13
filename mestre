@@ -1,0 +1,128 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main() {
+    // ==== CARTA 1 ====
+    char estado1;
+    char codigocarta1[4];
+    char nomecidade1[50];
+    int populacao1;
+    float area1;
+    float pib1;
+    int pontosturisticos1;
+
+    // ==== CARTA 2 ====
+    char estado2;
+    char codigocarta2[4];
+    char nomecidade2[50];
+    int populacao2;
+    float area2;
+    float pib2;
+    int pontosturisticos2;
+
+    // ==== VARIÁVEIS ====
+    int atributo;
+    int vencedor = 0;
+
+    // === Cadastro da Carta 1 ===
+    printf("=== Cadastro da Carta 1 ===\n");
+    printf("Nome do estado (letra):\n");
+    scanf(" %c", &estado1);
+
+    printf("Código da Carta:\n");
+    scanf("%s", codigocarta1);
+
+    printf("Nome da cidade:\n");
+    scanf(" %[^\n]", nomecidade1);
+
+    printf("População:\n");
+    scanf("%d", &populacao1);
+
+    printf("Área (km²):\n");
+    scanf("%f", &area1);
+
+    printf("PIB:\n");
+    scanf("%f", &pib1);
+
+    printf("Número de pontos turísticos:\n");
+    scanf("%d", &pontosturisticos1);
+
+    // === Cadastro da Carta 2 ===
+    printf("\n=== Cadastro da Carta 2 ===\n");
+    printf("Nome do estado (letra):\n");
+    scanf(" %c", &estado2);
+
+    printf("Código da Carta:\n");
+    scanf("%s", codigocarta2);
+
+    printf("Nome da cidade:\n");
+    scanf(" %[^\n]", nomecidade2);
+
+    printf("População:\n");
+    scanf("%d", &populacao2);
+
+    printf("Área (km²):\n");
+    scanf("%f", &area2);
+
+    printf("PIB:\n");
+    scanf("%f", &pib2);
+
+    printf("Número de pontos turísticos:\n");
+    scanf("%d", &pontosturisticos2);
+
+    // === Exibir cartas cadastradas ===
+    printf("\n=== Carta 1 ===\n");
+    printf("Estado: %c\nCódigo: %s\nCidade: %s\nPopulação: %d\nÁrea: %.2f km²\nPIB: %.2f\nPontos turísticos: %d\n",
+           estado1, codigocarta1, nomecidade1, populacao1, area1, pib1, pontosturisticos1);
+
+    printf("\n=== Carta 2 ===\n");
+    printf("Estado: %c\nCódigo: %s\nCidade: %s\nPopulação: %d\nÁrea: %.2f km²\nPIB: %.2f\nPontos turísticos: %d\n",
+           estado2, codigocarta2, nomecidade2, populacao2, area2, pib2, pontosturisticos2);
+
+    // === Escolher atributo manualmente ===
+    printf("\nEscolha o atributo para comparar:\n");
+    printf("1 - População\n");
+    printf("2 - Área\n");
+    printf("3 - PIB\n");
+    printf("4 - Pontos turísticos\n");
+    printf("Digite o número do atributo: ");
+    scanf("%d", &atributo);
+
+    // === Comparação ===
+    switch (atributo) {
+        case 1:
+            printf("\nAtributo escolhido: População\n");
+            if (populacao1 > populacao2) vencedor = 1;
+            else if (populacao2 > populacao1) vencedor = 2;
+            break;
+        case 2:
+            printf("\nAtributo escolhido: Área\n");
+            if (area1 > area2) vencedor = 1;
+            else if (area2 > area1) vencedor = 2;
+            break;
+        case 3:
+            printf("\nAtributo escolhido: PIB\n");
+            if (pib1 > pib2) vencedor = 1;
+            else if (pib2 > pib1) vencedor = 2;
+            break;
+        case 4:
+            printf("\nAtributo escolhido: Pontos turísticos\n");
+            if (pontosturisticos1 > pontosturisticos2) vencedor = 1;
+            else if (pontosturisticos2 > pontosturisticos1) vencedor = 2;
+            break;
+        default:
+            printf("\nAtributo inválido!\n");
+            return 0;
+    }
+
+    // === Resultado ===
+    if (vencedor == 1)
+        printf("\n🏆 A carta vencedora é a CIDADE 1: %s!\n", nomecidade1);
+    else if (vencedor == 2)
+        printf("\n🏆 A carta vencedora é a CIDADE 2: %s!\n", nomecidade2);
+    else
+        printf("\nEmpate!\n");
+
+    return 0;
+}
